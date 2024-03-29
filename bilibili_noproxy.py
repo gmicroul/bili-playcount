@@ -37,7 +37,8 @@ for bvid in bvids:
         'jsonp':'jsonp',
         'type':'3',
         'sub_type':'0',
-        'title': rdata["title"]
+        'title': rdata["title"],
+        'view': rdata["stat"]["view"]
     }
     reqdatas.append(data)
 
@@ -52,7 +53,7 @@ def goPlay(url):
                 data["stime"]=stime
                 headers["referer"]="https://www.bilibili.com/video/{}/".format(data.get("bvid"))
                 
-                print_log("bvid: {}, title: {}".format(data.get("bvid"), data.get("title")))
+                print_log("bvid: {}, title: {}".format(data.get("bvid"), data.get("title"), data.get("view")))
                 
                 requests.post(url, data=data, headers=headers)
 
